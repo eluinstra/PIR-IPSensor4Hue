@@ -99,7 +99,7 @@ void onSensorStateChange(boolean state)
 
 void printPutRequest(Print &p, JsonObject &object)
 {
-  p.println(String("PUT /api/") + username + "/sensors/" + sensorId+ "/state HTTP/1.1");
+  p.println(String("PUT /api/") + username + "/sensors/" + sensorId + "/state HTTP/1.1");
   p.println(String("Host: ") + host);
   p.println("Content-Type: application/json");
   p.println(String("Content-Length: ") + object.measureLength());
