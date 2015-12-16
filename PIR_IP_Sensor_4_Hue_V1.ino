@@ -1,3 +1,6 @@
+/*
+ This example code is in the public domain
+*/
 #include <ArduinoJson.h>
 #include <ESP8266WiFi.h>
 
@@ -21,6 +24,7 @@ const int motionEndDelay = 60 * 1000;
 boolean sensorState = LOW;
 boolean motionDetected = false;
 unsigned long motionEndTime;
+unsigned int mode;
 
 void initLED()
 {
@@ -90,7 +94,7 @@ void onSensorStateChange(boolean state)
   sensorState = state;
   Serial.println("SensorState: " + state);
   digitalWrite(LED,state);
-  sendStatus(state);
+  sendStatus(state + (2 * mode));
 }
 
 void printPutRequest(Print &p, JsonObject &object)
@@ -106,7 +110,7 @@ void printPutRequest(Print &p, JsonObject &object)
 
 void sendStatus(int status)
 {
-  Serial.println(String("Connecting to ") + host);
+  Serial.println(String("Opening connecting to ") + host);
   WiFiClient client;
   if (client.connect(host,port))
   {
@@ -126,6 +130,6 @@ void sendStatus(int status)
   }
   else
   {
-    Serial.println("Connection failed");
+    Serial.println("Opening connection failed");
   }
 }
