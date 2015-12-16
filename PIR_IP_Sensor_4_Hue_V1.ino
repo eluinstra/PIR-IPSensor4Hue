@@ -5,7 +5,7 @@
 #include <ESP8266WiFi.h>
 
 #Peripherals
-const int LED = 16;
+const int LED = BUILTIN_LED;
 const int PIR = 4;
 
 #WiFi
