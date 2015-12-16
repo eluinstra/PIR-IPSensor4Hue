@@ -36,6 +36,7 @@ To configure wifi you have to change the following constants:
 - port (= port of the Hue bridge)
 - username (= username for this sensor on the Hue bridge (see http://www.developers.meethue.com/documentation/configuration-api#71_create_user how to create a user))
 - sensorId (= sensor id for this sensor on the Hue bridge (see http://www.developers.meethue.com/documentation/how-use-ip-sensors how to create a sensor))
+- motionEndDelay (= the delay after the last motion before the sensor will change its status)
 
 See http://www.developers.meethue.com/documentation/getting-started how to connect to your Hue bridge
 
