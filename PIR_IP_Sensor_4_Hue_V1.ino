@@ -5,7 +5,7 @@
 #include <ESP8266WiFi.h>
 
 #Peripherals
-const int LED = BUILTIN_LED;
+const int LED = 13;
 const int PIR = 4;
 
 #WiFi
@@ -30,7 +30,7 @@ void initLED()
 {
   Serial.println("Initializing LED");  
   pinMode(LED,OUTPUT);
-  digitalWrite(LED,LOW);
+  digitalWrite(LED,HIGH);
 }
 
 void initWiFi()
@@ -64,7 +64,7 @@ void setup()
   initLED();
   initWiFi();
   initPIR();
-  digitalWrite(LED,HIGH);
+  digitalWrite(LED,LOW);
   Serial.println();
   delay(1000);
 }
@@ -93,7 +93,7 @@ void onSensorStateChange(boolean state)
 {
   sensorState = state;
   Serial.println("SensorState: " + state);
-  digitalWrite(LED,!state);
+  digitalWrite(LED,state);
   sendStatus(state + (2 * mode));
 }
 
