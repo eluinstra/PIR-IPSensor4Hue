@@ -13,13 +13,14 @@ What you need:
 - Philips Hue Brigde + light bulps
 - NodeMCU or other EPS2866 MCU
 - PIR motion sensor
+- LED (optional)
 - Arduino (https://www.arduino.cc/en/Main/Software)
   - ArduinoJson (https://github.com/bblanchon/ArduinoJson)
   - ESP8266 Arduino (https://github.com/esp8266/Arduino)
 - PIR_IP_Sensor_4_Hue_V1.ino
 
 #1 Sensor Hardware
-Connect the PIR to pin 4 of the NodeMCU.
+Connect the LED to pin 13 and the PIR to pin 4 of the NodeMCU.
 
 #2 Sensor Software V1
 Before you uploading can upload PIR_IP_Sensor_4_Hue_V1.ino to the NodeMCU you have to configure the wifi and the sensor.
