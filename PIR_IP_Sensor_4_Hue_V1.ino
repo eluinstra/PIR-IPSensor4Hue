@@ -1,6 +1,3 @@
-/*
- This example code is in the public domain
-*/
 #include <ArduinoJson.h>
 #include <ESP8266WiFi.h>
 
@@ -16,7 +13,7 @@ const char* password = "YOUR_PASSWORD";
 const char* host = "YOUR_IP";
 const int port = 80;
 const char* username = "YOUR_USERNAME";
-const int sensorId = 7;
+const int sensorId = YOUR_SENSOR_ID;
 
 #Sensor
 const int motionEndDelay = 60 * 1000;
@@ -24,7 +21,6 @@ const int motionEndDelay = 60 * 1000;
 boolean sensorState = LOW;
 boolean motionDetected = false;
 unsigned long motionEndTime;
-unsigned int mode;
 
 void initLED()
 {
@@ -94,12 +90,12 @@ void onSensorStateChange(boolean state)
   sensorState = state;
   Serial.println("SensorState: " + state);
   digitalWrite(LED,state);
-  sendStatus(state + (2 * mode));
+  sendStatus(state);
 }
 
 void printPutRequest(Print &p, JsonObject &object)
 {
-  p.println(String("PUT /api/") + username + "/sensors/" + sensorId + "/state HTTP/1.1");
+  p.println(String("PUT /api/") + username + "/sensors/" + sensorId+ "/state HTTP/1.1");
   p.println(String("Host: ") + host);
   p.println("Content-Type: application/json");
   p.println(String("Content-Length: ") + object.measureLength());
@@ -110,26 +106,28 @@ void printPutRequest(Print &p, JsonObject &object)
 
 void sendStatus(int status)
 {
-  Serial.println(String("Opening connecting to ") + host);
+  Serial.println(String("Connecting to ") + host);
   WiFiClient client;
-  if (client.connect(host,port))
+  if (!client.connect(host,port))
   {
-    StaticJsonBuffer<256> jsonBuffer;
-    JsonObject &object = jsonBuffer.createObject();
-    object["status"] = status;
-    printPutRequest(Serial,object);
-    Serial.println();
-    Serial.println();
-    printPutRequest(client,object);
-    delay(100);
-    while(client.available())
-      Serial.print(client.readStringUntil('\r'));
-    Serial.println();
-    Serial.println("Closing connection");
-    client.stop();
+    Serial.println("Connection failed");
+    return;
   }
-  else
+  StaticJsonBuffer<256> jsonBuffer;
+  JsonObject &object = jsonBuffer.createObject();
+  object["status"] = status;
+  printPutRequest(Serial,object);
+  Serial.println();
+  Serial.println();
+  printPutRequest(client,object);
+  delay(100);
+  while(client.available())
   {
-    Serial.println("Opening connection failed");
+    String s = client.readStringUntil('\r');
+    Serial.print(s);
   }
+  Serial.println();
+  Serial.println("Closing connection");
+  client.stop();
 }
+
