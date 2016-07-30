@@ -50,7 +50,6 @@ boolean stateChanged = false;
 #endif
 boolean motionDetected = false;
 unsigned long motionEndTime;
-unsigned int mode = 0;
 
 void handleButton()
 {
@@ -172,7 +171,7 @@ void onSensorStateChange(unsigned int state)
   Serial.println("SensorState: " + state);
   digitalWrite(LED,state);
 #endif
-  sendStatus(state + (2 * mode));
+  sendStatus(state);
 #ifndef DEBUG
   digitalWrite(LED,LED_LOW);
 #endif
