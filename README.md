@@ -13,7 +13,7 @@ What you need:
 - Philips Hue Brigde + light bulps
 - NodeMCU, ESP-01 or other EPS2866 MCU
 - PIR motion sensor
-- LED (optional)
+- LED (optional for V1)
 - Button (optional for V2)
 - Arduino (https://www.arduino.cc/en/Main/Software)
   - ArduinoJson (https://github.com/bblanchon/ArduinoJson)
