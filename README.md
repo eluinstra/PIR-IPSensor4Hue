@@ -19,10 +19,9 @@ What you need:
   - ESP8266 Arduino (https://github.com/esp8266/Arduino)
 - PIR_IP_Sensor_4_Hue_V1.ino
 
-#1 Sensor Hardware
+#1 Sensor V1
 Connect the LED to pin 13 and the PIR to pin 4 of the NodeMCU.
 
-#2 Sensor Software V1
 Before you uploading can upload PIR_IP_Sensor_4_Hue_V1.ino to the NodeMCU you have to configure the wifi and the sensor.
 
 Wifi configuration
@@ -44,7 +43,25 @@ After you changed the configuration you can upload PIR_IP_Sensor_4_Hue_V1.ino to
 
 Then you can create scenes through the Hue app and add rules to your Hue bridge to act on status changes of the sensor. See http://www.developers.meethue.com/documentation/how-use-ip-sensors how to create rules.
 
-Note: when you change a scene using the Hue app a new scene is created. So when the (old) scene was connected to a sensor the new scene will not be used, but the old scene will still be used. To use the new scene you have to reconfigure the sensor.
+You have to create 2 rules in the hue bridge for the sensor with id sensorId. One for each of the 2 statuses (for example dimmed and bright). The rules should have conditions with the following address:
+/sensors/<sensorId>/state/status
+with value 0 or 1 (for status 0 or 1) and an action with the right scene defined.
+
+Note: when you change a scene using the Hue app a new scene is created. So when the (old) scene was connected to a sensor the new scene will not be used, but the old scene will still be used. To use the new scene you have to reconfigure the rules for the sensor.
+
+#2 Sensor Software V2
+Connect the Button to GPIO3 (RX) and the PIR to pin GPIO0 of the ESP-01.
+
+With the button you can select the function of the sensor: off, status 1, status 2, pir (default).
+
+Before you uploading can upload PIR_IP_Sensor_4_Hue_V2.ino to the ESP-01 you have to configure the wifi and the sensor.
+
+See V1 for wifi and sensor configuration.
+
+You have to create 2 rules in the hue bridge for the sensor with id sensorId. One for each of the 2 statuses (for example dimmed and bright). The rules should have conditions with the following address:
+/sensors/<sensorId>/state/status
+with value 0, 1 or 2 (0 = off, 1 and 2 are the 2 pir statuses) and an action with the right scene defined.
+
 
 # Todo
 The following functionality will be added
