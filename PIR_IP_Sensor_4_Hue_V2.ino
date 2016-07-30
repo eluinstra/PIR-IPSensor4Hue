@@ -81,6 +81,7 @@ void initWiFi()
   Serial.println("Initializing Wifi");  
   Serial.print(String("Connecting to ") + ssid);
 #endif
+  WiFi.mode(WIFI_STA);
   WiFi.begin(ssid,password);
   while (WiFi.status() != WL_CONNECTED)
   {
