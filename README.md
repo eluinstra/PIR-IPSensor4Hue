@@ -11,13 +11,13 @@ The sensor can for example be used in a hall or a kitchen to trigger the lights 
 
 What you need:
 - Philips Hue Brigde + light bulps
-- NodeMCU or other EPS2866 MCU
+- NodeMCU, ESP-01 or other EPS2866 MCU
 - PIR motion sensor
 - LED (optional)
 - Arduino (https://www.arduino.cc/en/Main/Software)
   - ArduinoJson (https://github.com/bblanchon/ArduinoJson)
   - ESP8266 Arduino (https://github.com/esp8266/Arduino)
-- PIR_IP_Sensor_4_Hue_V1.ino
+- PIR_IP_Sensor_4_Hue_VX.ino
 
 #1 Sensor V1
 Connect the LED to pin 13 and the PIR to pin 4 of the NodeMCU.
