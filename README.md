@@ -44,7 +44,7 @@ After you changed the configuration you can upload PIR_IP_Sensor_4_Hue_V1.ino to
 Then you can create scenes through the Hue app and add rules to your Hue bridge to act on status changes of the sensor. See http://www.developers.meethue.com/documentation/how-use-ip-sensors how to create rules.
 
 You have to create 2 rules in the hue bridge for the sensor with id sensorId. One for each of the 2 statuses (for example dimmed and bright). The rules should have conditions with the following address:
-/sensors/<sensorId>/state/status
+/sensors/&lt;sensorId>/state/status
 with value 0 or 1 (for status 0 or 1) and an action with the right scene defined.
 
 Note: when you change a scene using the Hue app a new scene is created. So when the (old) scene was connected to a sensor the new scene will not be used, but the old scene will still be used. To use the new scene you have to reconfigure the rules for the sensor.
@@ -59,7 +59,7 @@ Before you uploading can upload PIR_IP_Sensor_4_Hue_V2.ino to the ESP-01 you hav
 See V1 for wifi and sensor configuration.
 
 You have to create 2 rules in the hue bridge for the sensor with id sensorId. One for each of the 2 statuses (for example dimmed and bright). The rules should have conditions with the following address:
-/sensors/<sensorId>/state/status
+/sensors/&lt;sensorId>/state/status
 with value 0, 1 or 2 (0 = off, 1 and 2 are the 2 pir statuses) and an action with the right scene defined.
 
 
