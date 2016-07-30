@@ -14,6 +14,7 @@ What you need:
 - NodeMCU, ESP-01 or other EPS2866 MCU
 - PIR motion sensor
 - LED (optional)
+- Button (optional for V2)
 - Arduino (https://www.arduino.cc/en/Main/Software)
   - ArduinoJson (https://github.com/bblanchon/ArduinoJson)
   - ESP8266 Arduino (https://github.com/esp8266/Arduino)
