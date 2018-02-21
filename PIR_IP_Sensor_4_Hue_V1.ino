@@ -1,21 +1,21 @@
 #include <ArduinoJson.h>
 #include <ESP8266WiFi.h>
 
-#Peripherals
+//Peripherals
 const int LED = 13;
 const int PIR = 4;
 
-#WiFi
+//WiFi
 const char* ssid = "YOUR_SSID";
 const char* password = "YOUR_PASSWORD";
 
-#Hue
+//Hue
 const char* host = "YOUR_IP";
 const int port = 80;
 const char* username = "YOUR_USERNAME";
 const int sensorId = YOUR_SENSOR_ID;
 
-#Sensor
+//Sensor
 const int motionEndDelay = 60 * 1000;
 
 boolean sensorState = LOW;
