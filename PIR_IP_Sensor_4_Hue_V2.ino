@@ -12,17 +12,17 @@ const int BTN = 3;
 #endif
 const int PIR = 0;
 
-#WiFi
+//WiFi
 const char* ssid = "YOUR_SSID";
 const char* password = "YOUR_PASSWORD";
 
-#Hue
+//Hue
 const char* host = "YOUR_IP";
 const int port = 80;
 const char* username = "YOUR_USERNAME";
 const int sensorId = YOUR_SENSOR_ID;
 
-#Sensor
+//Sensor
 const int motionEndDelay = 60 * 1000;
 
 #ifdef DEBUG
